@@ -1,5 +1,9 @@
+package Practise;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpGet;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.ContentType;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.util.EntityUtils;
@@ -29,6 +33,23 @@ public class TestRestApiProgram {
             return (T) (new JSONParser()).parse(responseString);
         }
         throw new RuntimeException("Didn't get expected Response: "+ httpResponse.getStatusLine().getStatusCode());
+    }
+
+
+    public static HttpPost doPost(String uri) throws URISyntaxException {
+        return new HttpPost(new URI(uri));
+    }
+
+
+    public void hitPostRequest() throws URISyntaxException, IOException {
+        String postUri = "https://example.com/api/endpoint";
+        String jsonBody= "{\"key1\":\"value1\",\"key2\":\"value2\"}";
+        HttpPost httpPost = doPost(postUri);
+        httpPost.setHeader("Content-Type", "application/json");
+        StringEntity stringEntity = new StringEntity(jsonBody,  ContentType.APPLICATION_JSON);
+        httpPost.setEntity(stringEntity);
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        HttpResponse httpResponse = httpClient.execute(httpPost);
     }
 
 
