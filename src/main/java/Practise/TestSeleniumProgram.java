@@ -1,4 +1,5 @@
 package Practise;
+import TestNG.Listerners;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -6,10 +7,12 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
 
+@Listeners(Listerners.class)
 public class TestSeleniumProgram {
 
 
@@ -18,7 +21,7 @@ public class TestSeleniumProgram {
 
     @BeforeTest
     public void setUp() {
-        System.setProperty("Webdriver.chrome.driver", "C:\\Users\\deepakc\\Desktop\\CNH\\CodingTest\\src\\main\\resources\\drivers\\chromedriver.exe");
+       // System.setProperty("Webdriver.chrome.driver", "C:\\Users\\deepakc\\Desktop\\CNH\\CodingTest\\src\\main\\resources\\drivers\\chromedriver.exe");
         webDriver = new ChromeDriver();
         currentDriver.set(webDriver);
         webDriver.manage().window().maximize();
@@ -31,8 +34,8 @@ public class TestSeleniumProgram {
         webDriver.manage().timeouts().implicitlyWait(Duration.ofMillis(2000));
         clickOnFlights();
         clickOnRoundTripRadioButton();
-        selectDeparture("Tue Apr 18 2023");
-        selectArrival("Sun Apr 23 2023");
+        selectDeparture("Tue May 23 2023");
+        selectArrival("Sun May 25 2023");
         clickSearch();
     }
 

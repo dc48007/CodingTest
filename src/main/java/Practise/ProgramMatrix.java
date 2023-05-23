@@ -16,7 +16,7 @@ public class ProgramMatrix {
         Integer transpose[][] = new Integer[3][3];
         for (int i = 0; i < givenarray[0].length; i++) {
             for (int j = 0; j < givenarray[0].length; j++) {
-                transpose[2-i][j] = givenarray[2-i][2-j];
+                transpose[j][i] = givenarray[2-i][j];
             }
         }
         //-----------//----------------------------------------------------

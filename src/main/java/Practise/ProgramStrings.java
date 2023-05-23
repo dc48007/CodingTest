@@ -1,6 +1,7 @@
 package Practise;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class ProgramStrings {
 
@@ -9,8 +10,8 @@ public class ProgramStrings {
     public static void main(String[] args) {
         System.out.println(reverseString("hello world real me"));
         System.out.println(reverseStringUSingStream("hello world deepak here"));
-        System.out.println(isPalindrome(123));
-        printRepetitiveWordsIntoSentence("my name is name");
+        System.out.println("verify Palindrome: " + isPalindrome(111121111));
+        printRepetitiveWordsInSentence("my name is nameisName");
     }
 
     public static String reverseString(String givenString) {
@@ -22,18 +23,13 @@ public class ProgramStrings {
         return Arrays.stream(givenString.split("//s+")).map(m -> new StringBuilder(m).reverse().toString()).collect(Collectors.joining(" "));
     }
 
-    public static int isPalindrome(int givenNumber){
-       return Integer.valueOf(Arrays.stream(String.valueOf(givenNumber).split("//s+")).map(m->new StringBuilder(m).reverse().toString()).collect(Collectors.joining("")));
+    public static boolean isPalindrome(int givenNumber) {
+        return IntStream.iterate(givenNumber, n -> n / 10).limit(String.valueOf(givenNumber).length()).map(n -> n % 10).reduce(0, (a, b) -> a * 10 + b) == givenNumber;
     }
 
-    public static void printRepetitiveWordsIntoSentence(String sentence){
-       Map<String, Long> wordCounts = Arrays.stream(sentence.split("\\s+"))
-                .collect(Collectors.groupingBy(String::toLowerCase, Collectors.counting()));
-       wordCounts.entrySet().stream().filter(f-> f.getValue()>1).forEach(entry -> System.out.println(entry.getKey()+ " repeats "+ entry.getValue()));
-
+    public static void printRepetitiveWordsInSentence(String sentence) {
+        Map<String, Long> wordCount = Arrays.stream(sentence.toLowerCase().split("\\s+")).filter(word -> word.replaceAll("[^a-zA-Z]", "").length() > 0).collect(Collectors.groupingBy(word -> word, Collectors.counting()));
+        Map<String, Long> duplicates = wordCount.entrySet().stream().filter(entry -> entry.getValue() > 1).collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+        duplicates.forEach((word, count) -> System.out.println("Duplicate word: " + word + ", Count: " + count));
     }
-
-
-
-
 }
