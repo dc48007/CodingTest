@@ -6,15 +6,11 @@ import java.util.stream.Collectors;
 public class ProgramRepetitiveCharsInString {
     public static void main(String[] args) {
         printRepetitiveCharsInStings();
-        printReverseString();
-
-
+        printReverseString("this is my pen");
     }
 
-    public static void printReverseString(){
-
-        String givenString = "Deepak";
-        String reverse = Arrays.stream(givenString.split("//s+")).map(s->new StringBuilder(s).reverse().toString()).findAny().orElseThrow();
+    public static void printReverseString(String given){
+        String reverse = Arrays.stream(given.split("\\s+")).map(s->new StringBuilder(s).reverse().toString()).collect(Collectors.joining(" "));
         System.out.println(reverse);
 
 
