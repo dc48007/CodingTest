@@ -1,34 +1,6 @@
 package Practise;
 public class ProgramSorting {
 
-    /**
-     * [3,2,5,1,9]
-     * <p>
-     * 2,3,5,1,9
-     *
-     *
-     * @param givenarray
-     * @return
-     */
-    public static int[] bubbleSort(int[] givenarray) {
-        int length = givenarray.length;
-        boolean swap = false;
-        for (int i = 0; i < length - 1; i++) {
-            for (int j = 0; j < length - 1 - i; j++) {
-                if (givenarray[j] > givenarray[j + 1]) {
-                    int temp = givenarray[j];
-                    givenarray[j] = givenarray[j + 1];
-                    givenarray[j + 1] = temp;
-                    swap = true;
-                }
-            }
-        }
-        if (swap == false) {
-            System.out.println("-------array is already sorted-----");
-        }
-        return givenarray;
-    }
-
     public static void quickSort(int[] array, int low, int high) {
         if (low < high) {
             // Partition the array
@@ -82,6 +54,12 @@ public class ProgramSorting {
     }
 
 
+    /**
+     * place last element of array at right position
+     * {1,4,6,7,9,3}
+     * @param givenArray
+     * @return int[]
+     */
     public static int[] arrangedTheLastElement(int[] givenArray) {
         int length = givenArray.length;
         int lastElement = givenArray[length - 1];
@@ -99,6 +77,11 @@ public class ProgramSorting {
 
 
 
+    /**
+     * unsorted array: {2,0,8,7,4}
+     * sorted array: {}
+     * @param givenArray
+     */
     public static void arrangeArrays(int[] givenArray) {
         int length = givenArray.length;
         for (int j = 0; j < length - 1; j++) {
