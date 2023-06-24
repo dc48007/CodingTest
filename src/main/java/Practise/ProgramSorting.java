@@ -1,4 +1,7 @@
 package Practise;
+import java.util.*;
+import java.util.stream.Collectors;
+
 public class ProgramSorting {
 
     public static void quickSort(int[] array, int low, int high) {
@@ -41,9 +44,13 @@ public class ProgramSorting {
     }
 
     public static void main(String[] args) {
-        int[] array = {5, 2, 8, 12, 3};
+        System.out.println("T shirt size: "+ printTshirtSize(40));;
+        int[] array = {5,6,7,0,4};
+        replaceArrayElementsWithLargestRightMostElement(array);
+        printArray(array);
 
 
+        findSmallestAndLargestElement(array);
         printArray(array);
         arrangeArrays(array);
         printArray(array);
@@ -75,16 +82,38 @@ public class ProgramSorting {
         return givenArray;
     }
 
+    /**
+     * {3,7,1,5,9}
+     * @param givenarray
+     */
+
+    public static void findSmallestAndLargestElement(int[] givenarray) {
+        // one way
+        int length = givenarray.length;
+        ArrayList<Integer> arrayList = new ArrayList<>();
+        List<Integer> sortedList = Arrays.stream(givenarray).boxed().sorted().collect(Collectors.toList());
+        System.out.println("Largest Element : " + sortedList.get(length - 1));
+        System.out.println("Smallest Element : " + sortedList.get(0));
+        //second way
+        for (int i : givenarray) {
+            arrayList.add(i);
+        }
+        Collections.sort(arrayList);
+        System.out.println("Largest Element : " + arrayList.get(length - 1));
+        System.out.println("Smallest Element : " + arrayList.get(0));
+        // third way
+    }
+
 
 
     /**
-     * unsorted array: {2,0,8,7,4}
+     * unsorted array: {2,0,8}
      * sorted array: {}
      * @param givenArray
      */
     public static void arrangeArrays(int[] givenArray) {
         int length = givenArray.length;
-        for (int j = 0; j < length - 1; j++) {
+        for (int j = 0; j < length; j++) {
             for (int i = 0; i < length - 1 - j; i++) {
                 if (givenArray[i] > givenArray[i + 1]) {
                     int temp = givenArray[i];
@@ -94,6 +123,42 @@ public class ProgramSorting {
             }
         }
     }
+
+
+    /**
+     *  [-1, -3, 3, 2, 8 ,6]
+     *
+     *  output -  [8, 8, 8, 8, 6, 0].
+     * @param givenArray
+     */
+    public static void replaceArrayElementsWithLargestRightMostElement(int[] givenArray){
+        int length = givenArray.length;
+
+        int lefttemp;
+        int righttemp = givenArray[length-1];
+        for (int i = length-2; i >=0; i--) {
+            lefttemp = givenArray [i];
+            givenArray[i] = righttemp;
+            if(righttemp< lefttemp){
+                righttemp = lefttemp;
+            }
+        }
+    }
+
+    private static String printTshirtSize(int number) {
+        String size;
+        switch (number) {
+            case 29:
+                return "small";
+            case 40:
+                return "medium";
+            default:
+                size = "Size does not exist";
+        }
+        return size;
+    }
+
+
 
 
 }

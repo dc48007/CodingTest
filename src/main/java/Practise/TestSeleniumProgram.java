@@ -1,10 +1,12 @@
 package Practise;
 import TestNG.Listerners;
 import org.openqa.selenium.By;
+import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Listeners;
@@ -25,6 +27,23 @@ public class TestSeleniumProgram {
         webDriver = new ChromeDriver();
         currentDriver.set(webDriver);
         webDriver.manage().window().maximize();
+    }
+
+
+
+    @Test
+    public void testShadowDomElement(){
+        webDriver.get("http://watir.com/examples/shadow_dom.html");
+        webDriver.manage().timeouts().implicitlyWait(Duration.ofMillis(2000));
+        WebElement shadowHost = webDriver.findElement(By.cssSelector("[id='shadow_host']"));
+        SearchContext shadowRoot = shadowHost.getShadowRoot();
+        try{
+            shadowRoot.findElement(By.cssSelector("#shadow_content > span")).isDisplayed();
+            Assert.assertEquals(shadowRoot.findElement(By.cssSelector("#shadow_content > span")).getText(), "some text");
+        }catch (Exception e){
+            throw new RuntimeException("Element not found", e);
+        }
+
     }
 
 

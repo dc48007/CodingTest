@@ -20,10 +20,10 @@ public class TestJavaProgram {
         System.out.println(mergedArray.length);
         Map<Integer, Long> countMap = Arrays.stream(mergedArray).boxed().collect(Collectors.groupingBy(w-> w,Collectors.counting()));
        // HashMap<Integer, Integer> countMap = new HashMap<>();
-     /*   for (Integer i : newArray) {
-                countMap.put(i, countMap.getOrDefault(i, 0)+1);
+      for (Integer i : mergedArray) {
+                countMap.put(i, countMap.getOrDefault(i, 0L)+1);
         }
-     */
+
 
 
         List<Integer> uncommonNumber = countMap.entrySet().stream().filter(f -> f.getValue() == 1).map(m -> m.getKey()).collect(Collectors.toList());

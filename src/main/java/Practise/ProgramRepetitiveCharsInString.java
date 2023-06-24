@@ -28,8 +28,5 @@ public class ProgramRepetitiveCharsInString {
         chars.entrySet().forEach(characterLongEntry -> {
             System.out.println(characterLongEntry.getKey() + ":::::" + characterLongEntry.getValue());;
         });
-
-
-
     }
 }
