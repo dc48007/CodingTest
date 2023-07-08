@@ -1,9 +1,4 @@
 package Practise;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 public class ProgramToFindBinaryGap {
 
     public static String findBinaryGap(int decimal) {
@@ -23,19 +18,17 @@ public class ProgramToFindBinaryGap {
         System.out.println(binaryNumber);
         char[] chars = binaryNumber.toCharArray();
         int lastCounter = 0;
-        int binarygapLength =0;
+        int initialBinaryGapLength = 0;
         for (int i = 0; i < chars.length; i++) {
             if (chars[i] == '1') {
                 if (lastCounter != 0) {
-                    if(binarygapLength<lastCounter){
-                        binarygapLength =lastCounter;
-                        lastCounter=0;
-                    }
+                    initialBinaryGapLength = initialBinaryGapLength < lastCounter ? lastCounter : initialBinaryGapLength;
+                    lastCounter = 0;
                 }
             } else {
                 lastCounter++;
             }
         }
-        System.out.println(binarygapLength);
+        System.out.println(initialBinaryGapLength);
     }
 }
