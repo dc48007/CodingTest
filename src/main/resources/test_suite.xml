@@ -2,17 +2,11 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="All Test Suite" parallel="methods" thread-count="5">
 
-    <parameter name="username" value="dc48007"/>
-    <parameter name="password" value="deepak31"/>
+
     <test name ="Sanity">
 
-        <groups>
-            <run>
-                <include name="Sanity"></include>
-            </run>
-        </groups>
+
         <classes>
-            <class name="TestNG.PractiseTestNGAspects"></class>
             <class name="Practise.TestSeleniumProgram"></class>
         </classes>
     </test>
