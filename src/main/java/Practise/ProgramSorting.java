@@ -52,6 +52,7 @@ public class ProgramSorting {
 
         findSmallestAndLargestElement(array);
         printArray(array);
+
         arrangeArrays(array);
         printArray(array);
 

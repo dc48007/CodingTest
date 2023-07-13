@@ -1,6 +1,12 @@
+import TestNG.Listerners;
+import org.testng.annotations.Listeners;
+import org.testng.annotations.Test;
+
+@Listeners(Listerners.class)
 public class InterviewDemo {
 
-    public static void main(String[] args) {
+    @Test
+    public void demo(){
 
     }
 }
