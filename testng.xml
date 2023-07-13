@@ -13,6 +13,7 @@
         </groups>
         <classes>
             <class name="TestNG.PractiseTestNGAspects"></class>
+            <class name="Practise.TestSeleniumProgram"></class>
         </classes>
     </test>
 </suite>
