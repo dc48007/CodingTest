@@ -4,7 +4,7 @@ public class PracticeToWorkInSharing {
 
 
     public void initialProgramCreated(){
-        System.out.println("Changes added by emp 2");
+        System.out.println("Emp03 has changes the lines");
         System.out.println("this is existing program");
     }
 
