@@ -8,7 +8,7 @@ public class ProgramToEnsureStringHaveAlphabets {
         if (givenString.isEmpty()) {
             System.out.println("Given string is empty");
         }
-        String[] s = givenString.split("\\W[0-9]+]");
+        String[] s = givenString.split("[a-zA-Z]+");
         Arrays.stream(s).forEach(System.out::println);
     }
     public static void main(String[] args) {
