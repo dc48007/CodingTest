@@ -18,9 +18,10 @@ public class Logger {
 
         // Usage
         Logger logger = new Logger();
-        logger.addInfo((add)-> System.out.println(add));
+        logger.addInfo(System.out::println);
         logger.log("Log message");
         logger.log("Deepak is my connection");
+        System.out.println(logger.logConsumers);
     }
 }
 
